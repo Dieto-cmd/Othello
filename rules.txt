@@ -1,0 +1,15 @@
+The game is played on the 8x8 grid.
+The game starts with 2 white circles
+and 2 black circles in the middle.
+Black player starts by placing a black circle on the grid
+in a way that outflanks at least one white circle.
+To outflank means to place a circle on the board
+so that your opponent's row (or rows) of circle(s)
+is bordered at each end by a disc of your colour.
+(A "row" may be made up of one or more circles).
+Outflanking works horizontally, vertically and diagonally.
+Then all outflanked circles change
+their color to the opposing one.
+Then a white players places his circle and so on.
+Turns alternate until there is no room on the board.
+Player with more circles of his color is the winner.
