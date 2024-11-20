@@ -87,10 +87,17 @@ void game()
     // Game Loop
     while(true)
     {
+        
         //While loop that validates coordinates input
         //and saves it in case it's valid
         while(true)
         {
+            //if statement that skips turn if there are any legal moves avaible
+            if (grid.CheckMoveBlack() == false)
+            {
+                cout<<"Black has no legal moves. Turn skipped."<<endl;
+                break;
+            }
             bool InputValid = false;
             cout<<"(Enter M to go back to the main menu)"<<endl;
             cout<<"Enter the row coordinate (Black): ";
@@ -142,15 +149,24 @@ void game()
                 ColumnNumber= stoi(input);
                 
             }
-            if(grid.BlackTurn(RowNumber, ColumnNumber) == true) //Black's turn happens 
+            /*BlackTurn tries to execute the move
+            and returns true if it succeds
+            (returns false if e.g. the move didn't outflank the opponent)*/
+            if(grid.BlackTurn(RowNumber, ColumnNumber,true) == true) //Black's turn happens 
             {
                 break;
             }
         }
         grid.Render(); //updating the board
+        grid.CheckWinner();//checking if the game is over
         //Below same logic but for white player
         while(true)
         {
+            if (grid.CheckMoveWhite() == false)
+            {
+                cout<<"White has no legal moves. Turn skipped."<<endl;
+                break;
+            }
             bool InputValid = false;
             cout<<"(Enter M to go back to the main menu)"<<endl;
             cout<<"Enter the row coordinate (White): ";
@@ -200,10 +216,7 @@ void game()
                 ColumnNumber= stoi(input);
                 
             }
-            //WhiteTurn returns tries to execute the move
-            //and returns true if it succeds
-            //(returns false if e.g. the move didn't outflank the opponent)
-            if(grid.WhiteTurn(RowNumber, ColumnNumber) == true) 
+            if(grid.WhiteTurn(RowNumber, ColumnNumber,true) == true) 
             {
                 break;
             }
@@ -212,7 +225,7 @@ void game()
         grid.CheckWinner();//checking if the game is over
     }
 }
-
+//rules submenu function
 void rules() 
 {
     fstream rules;
@@ -243,6 +256,7 @@ void rules()
         }
     }
 }
+//author submenu function
 void author() 
 {
     char input;
