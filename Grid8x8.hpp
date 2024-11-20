@@ -55,9 +55,10 @@ class Grid8x8
        }
        cout<<"\n\n";
     }
-    //Method WhiteTurn() which places a white circle and also changes the color
-    //of already existing black circles according to the rules of Othello 
-    bool WhiteTurn (int RowNumber, int ColumnNumber)
+    /*Method WhiteTurn() which places a white circle and also changes the color
+    of already existing black circles according to the rules of Othello
+    it returnes true if move has been made and false if it hasn't */
+    bool WhiteTurn (int RowNumber, int ColumnNumber, bool MakeMove)
     {
         bool outFlanked = false;
         bool squareNotTaken = false;
@@ -73,14 +74,14 @@ class Grid8x8
             cout <<"This square is already taken!"<<endl;
             return false;
         }
-        //Below lies logic responsible for changing black circles to white 
-        //when a new white circle is placed
+        /*Below lies logic responsible for changing black circles to white 
+        when a new white circle is placed*/
         if(squareNotTaken == true)
         {
-        //Loop that checks if there is a line of black circles that 
-        //ends with a white circle downwards from the placed white circle
-        //if so it changes the color of the black circles in the line to white
-        //and changes outFlanked value to true 
+        /*Loop that checks if there is a line of black circles that 
+        ends with a white circle downwards from the placed white circle
+        if so it changes the color of the black circles in the line to white
+        and changes outFlanked value to true */
             for (int i = ColumnNumber +1; i < TotalColumns; i++)
             {
                 if (grid[RowNumber][ColumnNumber +1] == "●")
@@ -95,6 +96,10 @@ class Grid8x8
                 {
                     for (int j = i; j > ColumnNumber;j--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[RowNumber][j] = "●";
                     }
                     outFlanked = true;
@@ -115,6 +120,10 @@ class Grid8x8
                 {
                     for (int j = i; j < ColumnNumber;j++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[RowNumber][j] = "●";
                     }
                     outFlanked = true;
@@ -135,6 +144,10 @@ class Grid8x8
                 {
                     for (int j = i; j < RowNumber;j++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[j][ColumnNumber] = "●";
                     }
                     outFlanked = true;
@@ -155,6 +168,10 @@ class Grid8x8
                 {
                     for (int j = i; j > RowNumber;j--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[j][ColumnNumber] = "●";
                     }
                     outFlanked = true;
@@ -175,6 +192,10 @@ class Grid8x8
                 {
                     for (int k = i, l = j; k > RowNumber && l > ColumnNumber ;k--,l--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "●";
                     }
                     outFlanked = true;
@@ -195,6 +216,10 @@ class Grid8x8
                 {
                     for (int k = i, l = j; k < RowNumber && l < ColumnNumber ;k++,l++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "●";
                     }
                     outFlanked = true;
@@ -215,6 +240,10 @@ class Grid8x8
                 {
                     for (int k = i, l = j; k < RowNumber && l > ColumnNumber ;k++,l--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "●";
                     }
                     outFlanked = true;
@@ -235,6 +264,10 @@ class Grid8x8
                 {
                     for (int k = i, l = j; k > RowNumber && l < ColumnNumber ;k--,l++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "●";
                     }
                     outFlanked = true;
@@ -248,12 +281,15 @@ class Grid8x8
             return true;
         }
         //if not it returns false
-        cout <<"You must outflank your opponent!"<<endl;
+        if (MakeMove == true)
+        {
+            cout<<"You must outflank your opponent!"<<endl;
+        }
         return false;  
     }   
     //Essentialy the same logic that White uses
     //but for black circles
-    bool BlackTurn (int RowNumber, int ColumnNumber)
+    bool BlackTurn (int RowNumber, int ColumnNumber, bool MakeMove)
     {
         bool outFlanked = false;
         bool squareNotTaken = false;
@@ -282,6 +318,10 @@ class Grid8x8
                 {
                     for (int j = i; j > ColumnNumber;j--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[RowNumber][j] = "○";
                     }
                     outFlanked = true;
@@ -301,6 +341,10 @@ class Grid8x8
                 {
                     for (int j = i; j < ColumnNumber;j++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[RowNumber][j] = "○";
                     }
                     outFlanked = true;
@@ -320,6 +364,10 @@ class Grid8x8
                 {
                     for (int j = i; j < RowNumber;j++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[j][ColumnNumber] = "○";
                     }
                     outFlanked = true;
@@ -339,6 +387,10 @@ class Grid8x8
                 {
                     for (int j = i; j > RowNumber;j--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[j][ColumnNumber] = "○";
                     }
                     outFlanked = true;
@@ -359,6 +411,10 @@ class Grid8x8
                     
                     for (int k = i, l = j; k > RowNumber && l > ColumnNumber ;k--,l--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "○";
                     }
                     outFlanked = true;
@@ -379,6 +435,10 @@ class Grid8x8
                     
                     for (int k = i, l = j; k < RowNumber && l < ColumnNumber ;k++,l++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "○";
                     }
                     outFlanked = true;
@@ -399,6 +459,10 @@ class Grid8x8
                     
                     for (int k = i, l = j; k < RowNumber && l > ColumnNumber ;k++,l--)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "○";
                     }
                     outFlanked = true;
@@ -419,6 +483,10 @@ class Grid8x8
                     
                     for (int k = i, l = j; k > RowNumber && l < ColumnNumber ;k--,l++)
                     {
+                        if (MakeMove == false)
+                        {
+                            return true;
+                        }
                         grid[k][l] = "○";
                     }
                     outFlanked = true;
@@ -430,7 +498,10 @@ class Grid8x8
             grid[RowNumber][ColumnNumber] = "○";
             return true;
         }
-        cout<<"You must outflank your opponent!"<<endl;
+        if (MakeMove == true)
+        {
+            cout<<"You must outflank your opponent!"<<endl;
+        }
         return false;
     }
     //Method that checks if the board is completely filled and if so
@@ -484,6 +555,7 @@ class Grid8x8
             }
         }
     }
+    //method that saves current board state in saveFile.txt
     void save()
     {
         string line;
@@ -501,6 +573,7 @@ class Grid8x8
         }
         saveFile.close();
     }
+    //method that loads board state from saveFile.txt
     void load()
     {
         fstream loadFile;
@@ -518,5 +591,35 @@ class Grid8x8
             }
         }
         loadFile.close();
+    }
+    //method that checks if there are any legal moves avaible for white
+    bool CheckMoveWhite()
+    {
+        for (int i = 0; i<TotalRows; i++)
+        {
+            for (int j = 0; j<TotalColumns; j++)
+            {
+                if (WhiteTurn(i,j,false)== true)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    //method that checks if there are any legal moves avaible for black
+    bool CheckMoveBlack()
+    {
+        for (int i = 0; i<TotalRows; i++)
+        {
+            for (int j = 0; j<TotalColumns; j++)
+            {
+                if (BlackTurn(i,j,false)== true)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 };
