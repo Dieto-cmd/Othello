@@ -60,13 +60,15 @@ void game()
     int ColumnNumber {};
     Grid8x8 grid;
     //New Game/Continue menu
-    cout<<"\tOthello by Dieto\n"<<endl;
-    cout<<"N. New Game"<<endl;
-    cout<<"C. Continue"<<endl;
-    cout<<"Make your choice: ";
-    cin >> input;
+    
+    
     while(true)
     {
+        cout<<"\tOthello by Dieto\n"<<endl;
+        cout<<"N. New Game"<<endl;
+        cout<<"C. Continue"<<endl;
+        cout<<"Make your choice: ";
+        cin >> input;
         if (input == "N")
         {
             grid.Render();

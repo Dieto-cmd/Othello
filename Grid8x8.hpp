@@ -71,7 +71,10 @@ class Grid8x8
         else 
         {
             //Handling the taken square scenario
-            cout <<"This square is already taken!"<<endl;
+            if(MakeMove == true)
+            {
+                cout <<"This square is already taken!"<<endl;
+            }
             return false;
         }
         /*Below lies logic responsible for changing black circles to white 
@@ -299,7 +302,10 @@ class Grid8x8
         }
         else 
         {
-            cout <<"This square is already taken!"<<endl;
+            if(MakeMove == true)
+            {
+                cout <<"This square is already taken!"<<endl;
+            }
             return false;
         }
         if (squareNotTaken == true)
