@@ -22,6 +22,7 @@ The game has input validation:
 <br />
 <img width="275" height="58" alt="Zrzut ekranu 2025-10-21 130352" src="https://github.com/user-attachments/assets/4c42bd4d-0ee0-405e-9675-b69a4cb6d443" />
 <br />
+It also saves state of the game in .txt file and has option to continue previously started game (and to start a new one).
 
 ## Playing the game
 
@@ -32,5 +33,6 @@ This should work on windows as well as linux.
  
 Othello.cpp must be in the same directory as Grid8x8.hpp, rules.txt and saveFile.txt for it to work properly.<br />
 OthelloSymbols.cpp must be in the same directory as Grid8x8Symbols.hpp, rules.txt and saveFile.txt for it to work properly.
+
 
 
